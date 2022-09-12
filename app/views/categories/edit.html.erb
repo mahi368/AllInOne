@@ -1,0 +1,13 @@
+<h1>Edit Categories</h1>
+
+<%= form_with model: @category do |form| %>
+<div>
+	<%= form.label :name %>
+	<%= form.text_field :name %>
+</div>
+<div>
+	<%= form.submit "edit category" %>
+</div>
+<% end %> 
+
+<%= link_to "back", root_path %>

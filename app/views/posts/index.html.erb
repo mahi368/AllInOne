@@ -1,0 +1,26 @@
+<%= render "form" %>
+<h2>Posts</h2> 
+<% if @posts.present? %>
+<table>
+	<tr>
+		<th>User name</th>
+		<th>Caption</th>
+		<th>Category</th>
+	</tr>		
+	<% @posts.each do |post| %>
+		<tr>
+			<td><em><%= post.user.user_name %></em></td>
+			<td><%= post.caption %></td>
+			<td><%= post.category.name %></td>
+			<% if post.user == current_user || current_user.role? == "Admin" %>
+			 <td><%= button_to "edit" , edit_post_path(post) , method: :get %></td>
+			 <td><%= button_to "Delete" , post_path(post) , method: :delete %></td>
+			<% end %>
+			<td><%= button_to "show" , post_path(post) , method: :get %></td>		
+		</tr>
+	<% end %>	
+</table>
+<%else %>
+	<h3>Not found</h3>
+<% end %>
+<%= link_to "Back" , root_path %>

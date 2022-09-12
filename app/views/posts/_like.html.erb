@@ -1,0 +1,13 @@
+<% if comment.likes.map(&:user_id).include?(current_user.id) %>
+	<%= button_to "Dislike" , like_dislike_posts_path(comment_id: comment.id , like: false) , method: :delete , remote: true %>
+<% else %>
+	<%= button_to "Like" , like_dislike_posts_path(comment_id: comment.id , like: true) , method: :post , remote: true %>
+<% end %>
+  <%= comment.likes.count %>
+  <% if comment.likes.count == 1 || comment.likes.count == 0 %>
+       Like
+     <% else %>
+       Likes
+  <% end %>
+
+

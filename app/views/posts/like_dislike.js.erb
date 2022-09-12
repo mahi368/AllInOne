@@ -1,0 +1,1 @@
+$("#like_" + <%= @comment.id %>).html("<%= escape_javascript(render partial: 'like' , locals: { comment: @comment }  ) %>");

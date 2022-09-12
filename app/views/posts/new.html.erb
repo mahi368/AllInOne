@@ -1,0 +1,18 @@
+<h1>New post</h1>
+<%= form_with model: @post , url: posts_path , method: :post do |form| %>
+<div>
+	<strong><%= form.label :caption %></strong><br>
+	<%= form.text_field :caption %>
+</div><br>
+ <div>
+    <%= form.file_field :avatar , multiple: true   %>
+ </div>
+
+<div>
+	<%= form.select :category_id, options_from_collection_for_select(Category.all, "id", "name") %>
+</div>
+<div>
+	<%= form.submit "Save" %>
+</div>
+<% end %><br>
+<%= link_to "back" , root_path %>

@@ -1,0 +1,11 @@
+<center>
+	<table>
+		<% comment.comments.each do |reply| %>
+		<tr>
+			<td><%= reply.feedback %><em style="font-size: 12px;"> ~ by <%= reply.user.user_name %></em></td>
+			<td><%= button_to "destroy reply" , delete_reply_posts_path(post_id: @post.id, comment_id: reply.id), remote: true , method: :delete  %></td>
+		</tr>
+		<% end %>
+	</table>	
+</center>
+

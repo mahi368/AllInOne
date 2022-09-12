@@ -1,0 +1,39 @@
+<h1><marquee>Mahi's website</marquee></h1>
+<center> 
+  <h2>Home page</h2>
+<p>
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.user_name %></strong>.<br>Your role is <strong><%= current_user.role? %></strong>
+  <table>
+    <tr>
+      <td><%= button_to 'Edit profile', edit_user_registration_path, method: :get, :class => 'navbar-link' %></td>
+      <td><%= button_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></td>
+      <td><%= button_to "Posts" , posts_path , method: :get %></td>
+      <td><%= button_to "Categories" , categories_path , method: :get %></td>
+    </tr>
+  </table>
+</p>    
+  <% if current_user.role?.eql?("Admin") %>
+    <h2>Users</h2>
+      <%= render "user" %><br>
+  <% else %>
+  <table>
+    <tr>
+      <th>User name</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+    <tr>
+      <td><%= current_user.user_name %></td>
+      <td><%= current_user.email %></td>
+      <td><%= current_user.role? %></td>
+    </tr>
+  </table>
+  <%= button_to "New post" , new_post_path , method: :get %>
+  <% end %>         
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+<% end %>
+</p>  
+</center>

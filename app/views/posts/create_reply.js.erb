@@ -1,0 +1,1 @@
+$("#reply_to_" + <%= @comment.id %>).html("<%= escape_javascript(render partial: 'reply', locals: { comment: @comment }   ) %>");

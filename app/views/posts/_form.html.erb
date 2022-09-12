@@ -1,0 +1,5 @@
+<%= search_form_for(@query) do |f| %>
+      <%= f.label :caption_cont, 'Search :' %>
+      <%= f.search_field :caption_or_user_user_name_i_cont_any , placeholder: "search here",minlength: 3 %>
+      <%= f.submit %>
+<% end %>

@@ -1,0 +1,25 @@
+<h1>Edit post</h1>
+<%= form_with model: @post , url: post_path , method: :put do |form| %>
+<div>
+	<strong><%= form.label :caption %></strong><br>
+	<%= form.text_field :caption %>
+</div><br>
+ <div>
+    <%= form.file_field :avatar , multiple: true  %>
+ </div>
+	 <%= form.label :Category %>
+
+	<select name="post[category_id]">
+	<option value=""></option>
+	<option value="5" selected="selected">Good</option>
+	<option value="6">Bad</option>
+	<option value="7">Very Good</option>
+	<option value="8">Very Bad</option>
+	</select>
+</div>
+<div>
+	<%= form.submit "Update" %>
+</div>
+<% end %><br>
+<%= link_to "back" , root_path %>
+
